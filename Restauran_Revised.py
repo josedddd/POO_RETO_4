@@ -140,58 +140,58 @@ class Money_Payment(Payment):
             return "You don't have enough money :///"
             
 # 🥤 Drinks
-coca = Beverage("Coca-cola", 2.5)
-coca.set_size("medium")
-coca.set_bottle_type("plastic")
+coke = Drink("Coca-cola", 2.5)
+coke.set_size("medium")
+coke.set_bottle_type("plastic")
 
-agua = Beverage("Water", 1.5)
-agua.set_size("large")
-agua.set_bottle_type("glass")
+water = Drink("Water", 1.5)
+water.set_size("large")
+water.set_bottle_type("glass")
 
-jugo = Beverage("Orange juice", 3.0)
-jugo.set_size("small")
-jugo.set_bottle_type("tetra pak")
+juice = Drink("Orange juice", 3.0)
+juice.set_size("small")
+juice.set_bottle_type("tetra pak")
 
-te = Beverage("Iced tea", 2.0)
-te.set_size("medium")
-te.set_bottle_type("plastic")
+iced_tea = Drink("Iced tea", 2.0)
+iced_tea.set_size("medium")
+iced_tea.set_bottle_type("plastic")
 
-# 🍟 Apetizer
-papas = Apetizer("French fries", 3.0)
-papas.set_sauce("Ketchup")
+# 🍟 Appetizers
+fries = Appetizer("French fries", 3.0)
+fries.set_sauce("Ketchup")
 
-alitas = Apetizer("Wings", 4.5)
-alitas.set_sauce("BBQ")
+wings = Appetizer("Wings", 4.5)
+wings.set_sauce("BBQ")
 
-nuggets = Apetizer("Nuggets", 3.5)
+nuggets = Appetizer("Nuggets", 3.5)
 nuggets.set_sauce("Mustard")
 
-ensalada = Apetizer("Mixed salad", 3.0)
-ensalada.set_sauce("Ranch")
+salad = Appetizer("Mixed salad", 3.0)
+salad.set_sauce("Ranch")
 
-# 🍽️ Main Course
-hamburguesa = MainPlate("Hamburger", 6.0)
-hamburguesa.set_accompaniment1("French fries")
-hamburguesa.set_accompaniment2("Salad")
+# 🍽️ Main Courses
+hamburger = MainCourse("Hamburger", 6.0)
+hamburger.set_accompaniment1("French fries")
+hamburger.set_accompaniment2("Salad")
 
-pollo_frito = MainPlate("Fried chicken", 7.0)
-pollo_frito.set_accompaniment1("Mashed potatoes")
-pollo_frito.set_accompaniment2("Corn")
+fried_chicken = MainCourse("Fried chicken", 7.0)
+fried_chicken.set_accompaniment1("Mashed potatoes")
+fried_chicken.set_accompaniment2("Corn")
 
-lasaña = MainPlate("Lasagna", 8.0)
-lasaña.set_accompaniment1("Garlic bread")
-lasaña.set_accompaniment2("Green salad")
+lasagna = MainCourse("Lasagna", 8.0)
+lasagna.set_accompaniment1("Garlic bread")
+lasagna.set_accompaniment2("Green salad")
 
-bistec = MainPlate("Steak", 9.5)
-bistec.set_accompaniment1("Rice")
-bistec.set_accompaniment2("Sautéed potatoes")
+steak = MainCourse("Steak", 9.5)
+steak.set_accompaniment1("Rice")
+steak.set_accompaniment2("Sautéed potatoes")
 
-# 🍰 Dessert
-helado = Dessert("Ice cream", 2.0)
-helado.set_flavour("Vanilla")
+# 🍰 Desserts
+ice_cream = Dessert("Ice cream", 2.0)
+ice_cream.set_flavour("Vanilla")
 
-pastel = Dessert("Chocolate cake", 2.5)
-pastel.set_flavour("Chocolate")
+chocolate_cake = Dessert("Chocolate cake", 2.5)
+chocolate_cake.set_flavour("Chocolate")
 
 flan = Dessert("Flan", 2.2)
 flan.set_flavour("Caramel")
@@ -201,23 +201,20 @@ brownie.set_flavour("Walnut")
 
 
 # Create an order
-orden_1 = Order(number=1)
+order_1 = Order(number=1)
 
 # Add items
-orden_1.add_items(hamburguesa, 2)     # Hamburger (MainPlate)
-orden_1.add_items(jugo, 2)            # Juice (Beverage)
-orden_1.add_items(nuggets, 2)         # Nuggets (Apetizer)
-orden_1.add_items(helado, 2)          # Ice cream (Dessert)
-orden_1.add_items(agua, 2)            # Water (Beverage)
+order_1.add_items(hamburger, 2)     # Hamburger (MainCourse)
+order_1.add_items(juice, 2)         # Juice (Drink)
+order_1.add_items(nuggets, 2)       # Nuggets (Appetizer)
+order_1.add_items(ice_cream, 2)     # Ice cream (Dessert)
+order_1.add_items(water, 2)         # Water (Drink)
 
-
-# Calculate total price, there is a 10% in beverage, because the item hamburger 
-total = orden_1.calculate_total_price()
+# Calculate total price, In this case there is a 10% discount on beverage, because there is a Hamburger in the order
+total = order_1.calculate_total_price()
 print(total)
 
 # Add the payment
-pago_efectivo = Money_Payment(total)
-pago_efectivo.set_amount(50.0)  # The customer gives $50
-print(pago_efectivo.pay())
-
-
+cash_payment = MoneyPayment(total)
+cash_payment.set_amount(50.0)  #
+print(cash_payment.pay())
