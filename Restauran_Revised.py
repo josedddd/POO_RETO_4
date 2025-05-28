@@ -139,64 +139,85 @@ class Money_Payment(Payment):
         else:
             return "You don't have enough money :///"
             
-# 🥤 Bebidas
+# 🥤 Drinks
 coca = Beverage("Coca-cola", 2.5)
-coca.set_size("mediana")
-coca.set_bottle_type("plástico")
+coca.set_size("medium")
+coca.set_bottle_type("plastic")
 
-agua = Beverage("Agua", 1.5)
-agua.set_size("grande")
-agua.set_bottle_type("vidrio")
+agua = Beverage("Water", 1.5)
+agua.set_size("large")
+agua.set_bottle_type("glass")
 
-jugo = Beverage("Jugo de naranja", 3.0)
-jugo.set_size("pequeño")
+jugo = Beverage("Orange juice", 3.0)
+jugo.set_size("small")
 jugo.set_bottle_type("tetra pak")
 
-te = Beverage("Té helado", 2.0)
-te.set_size("mediana")
-te.set_bottle_type("plástico")
+te = Beverage("Iced tea", 2.0)
+te.set_size("medium")
+te.set_bottle_type("plastic")
 
-# 🍟 Entradas
-papas = Apetizer("Papas fritas", 3.0)
-papas.set_sauce("Kétchup")
+# 🍟 Apetizer
+papas = Apetizer("French fries", 3.0)
+papas.set_sauce("Ketchup")
 
-alitas = Apetizer("Alitas", 4.5)
+alitas = Apetizer("Wings", 4.5)
 alitas.set_sauce("BBQ")
 
 nuggets = Apetizer("Nuggets", 3.5)
-nuggets.set_sauce("Mostaza")
+nuggets.set_sauce("Mustard")
 
-ensalada = Apetizer("Ensalada mixta", 3.0)
+ensalada = Apetizer("Mixed salad", 3.0)
 ensalada.set_sauce("Ranch")
 
-# 🍽️ Platos fuertes
+# 🍽️ Main Course
 hamburguesa = MainPlate("Hamburger", 6.0)
-hamburguesa.set_accompaniment1("Papas fritas")
-hamburguesa.set_accompaniment2("Ensalada")
+hamburguesa.set_accompaniment1("French fries")
+hamburguesa.set_accompaniment2("Salad")
 
 pollo_frito = MainPlate("Fried chicken", 7.0)
-pollo_frito.set_accompaniment1("Puré de papa")
-pollo_frito.set_accompaniment2("Maíz")
+pollo_frito.set_accompaniment1("Mashed potatoes")
+pollo_frito.set_accompaniment2("Corn")
 
-lasaña = MainPlate("Lasaña", 8.0)
-lasaña.set_accompaniment1("Pan de ajo")
-lasaña.set_accompaniment2("Ensalada verde")
+lasaña = MainPlate("Lasagna", 8.0)
+lasaña.set_accompaniment1("Garlic bread")
+lasaña.set_accompaniment2("Green salad")
 
-bistec = MainPlate("Bistec", 9.5)
-bistec.set_accompaniment1("Arroz")
-bistec.set_accompaniment2("Papas salteadas")
+bistec = MainPlate("Steak", 9.5)
+bistec.set_accompaniment1("Rice")
+bistec.set_accompaniment2("Sautéed potatoes")
 
-# 🍰 Postres
-helado = Dessert("Helado", 2.0)
-helado.set_flavour("Vainilla")
+# 🍰 Dessert
+helado = Dessert("Ice cream", 2.0)
+helado.set_flavour("Vanilla")
 
-pastel = Dessert("Pastel de chocolate", 2.5)
+pastel = Dessert("Chocolate cake", 2.5)
 pastel.set_flavour("Chocolate")
 
 flan = Dessert("Flan", 2.2)
-flan.set_flavour("Caramelo")
+flan.set_flavour("Caramel")
 
 brownie = Dessert("Brownie", 2.8)
-brownie.set_flavour("Nuez")
+brownie.set_flavour("Walnut")
+
+
+# Create an order
+orden_1 = Order(number=1)
+
+# Add items
+orden_1.add_items(hamburguesa, 2)     # Hamburger (MainPlate)
+orden_1.add_items(jugo, 2)            # Juice (Beverage)
+orden_1.add_items(nuggets, 2)         # Nuggets (Apetizer)
+orden_1.add_items(helado, 2)          # Ice cream (Dessert)
+orden_1.add_items(agua, 2)            # Water (Beverage)
+
+
+# Calculate total price, there is a 10% in beverage, because the item hamburger 
+total = orden_1.calculate_total_price()
+print(total)
+
+# Add the payment
+pago_efectivo = Money_Payment(total)
+pago_efectivo.set_amount(50.0)  # The customer gives $50
+print(pago_efectivo.pay())
 
 
