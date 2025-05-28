@@ -109,7 +109,7 @@ class Payment:
         pass
 
 
-class Card(Payment):
+class Card_Payment(Payment):
     def __init__(self, bill):
         super().__init__(bill)
        
@@ -123,7 +123,7 @@ class Card(Payment):
         return f"Thanks for paying {self.bill} with the card ending with {self.__number_card[-4:]}"
 
 
-class Money(Payment):
+class Money_Payment(Payment):
     def __init__(self, bill):
         super().__init__(bill)
      
@@ -138,4 +138,65 @@ class Money(Payment):
             return f"Thanks for paying {self.bill}, here is your change {self.__amount - self.bill}"
         else:
             return "You don't have enough money :///"
+            
+# 🥤 Bebidas
+coca = Beverage("Coca-cola", 2.5)
+coca.set_size("mediana")
+coca.set_bottle_type("plástico")
+
+agua = Beverage("Agua", 1.5)
+agua.set_size("grande")
+agua.set_bottle_type("vidrio")
+
+jugo = Beverage("Jugo de naranja", 3.0)
+jugo.set_size("pequeño")
+jugo.set_bottle_type("tetra pak")
+
+te = Beverage("Té helado", 2.0)
+te.set_size("mediana")
+te.set_bottle_type("plástico")
+
+# 🍟 Entradas
+papas = Apetizer("Papas fritas", 3.0)
+papas.set_sauce("Kétchup")
+
+alitas = Apetizer("Alitas", 4.5)
+alitas.set_sauce("BBQ")
+
+nuggets = Apetizer("Nuggets", 3.5)
+nuggets.set_sauce("Mostaza")
+
+ensalada = Apetizer("Ensalada mixta", 3.0)
+ensalada.set_sauce("Ranch")
+
+# 🍽️ Platos fuertes
+hamburguesa = MainPlate("Hamburger", 6.0)
+hamburguesa.set_accompaniment1("Papas fritas")
+hamburguesa.set_accompaniment2("Ensalada")
+
+pollo_frito = MainPlate("Fried chicken", 7.0)
+pollo_frito.set_accompaniment1("Puré de papa")
+pollo_frito.set_accompaniment2("Maíz")
+
+lasaña = MainPlate("Lasaña", 8.0)
+lasaña.set_accompaniment1("Pan de ajo")
+lasaña.set_accompaniment2("Ensalada verde")
+
+bistec = MainPlate("Bistec", 9.5)
+bistec.set_accompaniment1("Arroz")
+bistec.set_accompaniment2("Papas salteadas")
+
+# 🍰 Postres
+helado = Dessert("Helado", 2.0)
+helado.set_flavour("Vainilla")
+
+pastel = Dessert("Pastel de chocolate", 2.5)
+pastel.set_flavour("Chocolate")
+
+flan = Dessert("Flan", 2.2)
+flan.set_flavour("Caramelo")
+
+brownie = Dessert("Brownie", 2.8)
+brownie.set_flavour("Nuez")
+
 
