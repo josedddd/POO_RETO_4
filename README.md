@@ -199,9 +199,9 @@ class Triangle(Shape):
         self.compute_edges()
         return (self._leng_edge1+self._leng_edge2 +self._leng_edge3)
 ```
-Por ultimo heredo todas los tipos de triangulo (como use ley de coseno y el area universal, esas funciones sirven pa todo tipo, asi entendi yo el ejercicio) 
-class EquilateralTriangle(Triangle):
+Por ultimo heredo todas los tipos de triangulo (como use ley de coseno y el area universal, esas funciones sirven pa todo tipo de triangulo, ( el punto de orientacion de objetos es reutilizar codigo no?) 
 ```python
+class EquilateralTriangle(Triangle):
 
     def __init__(self):
         super().__init__()
