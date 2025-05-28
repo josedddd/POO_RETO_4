@@ -146,8 +146,8 @@ class Money_Payment(Payment):
             return f"Thanks for paying {self.bill}, here is your change {self.__amount - self.bill}"
         else:
             return "You don't have enough money :///"
-            
-# 🥤 Drinksn
+# Helo, this is our menu, if you order hamburger you will have a 10% discount on beverage and if you order fried chicken you will have a 5% on desserts :)
+# 🥤 Drinks
 coke = Beverage("Coca-cola", 2.5)
 coke.set_size("medium")
 coke.set_bottle_type("plastic")
@@ -164,7 +164,7 @@ iced_tea =Beverage("Iced tea", 2.0)
 iced_tea.set_size("medium")
 iced_tea.set_bottle_type("plastic")
 
-# 🍟 Appetizers
+# 🍟 Apetizers
 fries = Apetizer("French fries", 3.0)
 fries.set_sauce("Ketchup")
 
