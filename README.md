@@ -134,7 +134,7 @@ class Rectangle(Shape):
     def compute_inner_angles(self):
         return [90, 90, 90, 90]
 ```
-En consiguiente creo la clase trianguo. Aqui no es tan nescecario tener en cuenta el orden de los vertices. Uso la ley de coseno y la ley del area universal de los triangulos para calcular el area y los angulos internos (si esta vez si los calculo). 
+En consiguiente creo la clase triangulo. Aqui no es tan nescecario tener en cuenta el orden de los vertices. Uso la ley de coseno y la ley del area universal de los triangulos para calcular el area y los angulos internos (si esta vez si los calculo).  
 ```python
 class Triangle(Shape):
 
@@ -202,7 +202,7 @@ class Triangle(Shape):
         self.compute_edges()
         return (self._leng_edge1+self._leng_edge2 +self._leng_edge3)
 ```
-Por ultimo heredo todas los tipos de triangulo (como use ley de coseno y el area universal, esas funciones sirven pa todo tipo de triangulo, ( el punto de orientacion de objetos es reutilizar codigo no?) 
+Por ultimo heredo todas los tipos de triangulo (como use ley de coseno y el area universal, esas funciones sirven pa todo tipo de triangulo, ( el punto de orientacion de objetos es reutilizar codigo no?) Ademas no pongo que se verifique si es un triangulo de ese tipo, porque eso se hace con el manejo de errores (reto 6) ademas que si se ponen los vertices bien, el codigo es correcto
 ```python
 class EquilateralTriangle(Triangle):
 
