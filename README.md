@@ -42,7 +42,7 @@ class Square(Shape):
         return perimeter
 ```
 # Punto2
-Ahora bien, con respecto al segundo ejercicio la cosa se vuelve mas interesante. En este se pedia realizar en codigo el diagrama UML, que aparecia en el reto. Primero decidi de utilizar los vertices, para calcular las otras cosas por lo que set(edges) esta como compute(edges). Luego cree la "super clase" Shape, donde defino todas las funciones que se utilizaran: 
+Ahora bien, con respecto al segundo ejercicio la cosa se vuelve mas interesante. En este se pedia realizar en codigo el diagrama UML, que aparecia en el reto. Primero decidi de utilizar los vertices, para calcular las otras cosas por lo que set(edges) esta como compute(edges). Luego cree la "super clase" Shape, donde defino todas las funciones que se utilizaran. Cable aclarar que puse todos los atributos de tipo protegido y no privado, puesto que nescecito que se herede despues (PD no cree setter ni getter para la clase Point, ni la clase Line, pero es que no es nescecario): 
 
 ```python
   
@@ -77,7 +77,7 @@ class Shape():
     def compute_area(self):
         pass
 ```
-En consiguiente creo la clase rectangulo. Es muy importante tener en cuenta el orden de meter los vertices, pues esto cambia mucho el codigo (se podria arreglar con manejar errores pero eso no se ha viso :/). Asimismo en la funcion compute_inner_angles, realmente no los calculo, pero es que los angulos de un rectangulo siempre son 90, asi que no veo ninguna nescecidad (si me dio un poco de pereza). Una ultima cosa es que antes de lo que esta en get_edges, llamo la funcion compute_edges, puesto que si no se ha llamado esta antes, se va a generar un error
+En consiguiente creo la clase rectangulo. Es muy importante tener en cuenta el orden de meter los vertices, pues esto cambia mucho el codigo (se podria arreglar con manejar errores pero eso no se ha viso :/). Asimismo en la funcion compute_inner_angles, realmente no los calculo, pero es que los angulos de un rectangulo siempre son 90, asi que no veo ninguna nescecidad (si me dio un poco de pereza), luego creo la clase square y al heredo de rectangulo. Una ultima cosa es que antes de lo que esta en get_edges, llamo la funcion compute_edges, puesto que si no se ha llamado esta antes, se va a generar un error
 
 ```python
 
@@ -222,3 +222,4 @@ class RightTriangle(Triangle):
         super().__init__()
 ```
 # Restaurante
+Lo que cambio en el restaurante es uno, le puse setter y getter a las subclases de Menu_Item y ademas puse Menu_Item en protegido (no en privado)
