@@ -84,8 +84,8 @@ class Order:
     def calculate_total_price(self) -> float:
         total_bill = 0
         total_quantity = 0
-
         main_plate_names = []
+        
         for item, quantity in self.order:
             if isinstance(item, MainPlate):
                 main_plate_names.append(item.name)
@@ -93,7 +93,7 @@ class Order:
         for menu_item, quantity in self.order:
             price = menu_item.calculate_price(quantity)
 
-            if "Hamburger"in main_plate_names and isinstance(menu_item, Beverage):
+            if "Hamburger" in main_plate_names and isinstance(menu_item, Beverage):
                 price *= 0.9  # 10% Discount on beverages
 
             if "Fried chicken" in main_plate_names and isinstance(menu_item, Dessert):
