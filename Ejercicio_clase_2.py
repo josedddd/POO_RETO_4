@@ -1,5 +1,5 @@
 
-from math import degrees,acos,sin,radians
+from math import degrees,acos,sin,radians,atan2
 
 
 class Point:
@@ -12,7 +12,8 @@ class Line:
         self.point_start = point_start
         self.point_end = point_end
         self.length = ((point_end.x - point_start.x) ** 2 + (point_end.y - point_start.y) ** 2) ** 0.5
-
+        self.slope = atan2((point_end.y - point_start.y),(point_end.x - point_start.x))
+        self.slope_degrees = degrees(self.slope)
 
     def compute_length(self) -> float:
         return self.length
@@ -103,6 +104,7 @@ class Rectangle(Shape):
 class Square(Rectangle):
     def __init__(self):
         super().__init__()
+    
 
 class Triangle(Shape):
     def __init__(self):
@@ -121,6 +123,7 @@ class Triangle(Shape):
 
 
     def get_edges(self):
+        self.compute_edges()
         return [
         {
             "name": "A",
@@ -143,6 +146,7 @@ class Triangle(Shape):
     ]
 
     def compute_inner_angles(self):
+        self.compute_edges
          #### El orden del calculo de los angulos es 
          # [Angulo opuesto al lado "A", Angulo opuesto al Lado B, Angulo opuesto al lado C]
         self.compute_edges()
@@ -160,6 +164,7 @@ class Triangle(Shape):
         
     def compute_area(self) -> float:
         self.compute_edges()
+        self.compute_inner_angles()
         return (1/2*self._leng_edge1*self._leng_edge2*sin(radians(self.angle_edge_3)))
        
     def compute_perimeter(self) -> float:
@@ -169,7 +174,7 @@ class Triangle(Shape):
 class EquilateralTriangle(Triangle):
     def __init__(self):
         super().__init__()
-        
+    
 class IsoscelesTriangle(Triangle):
      def __init__(self):
         super().__init__()
@@ -181,18 +186,3 @@ class ScaleneTriangle(Triangle):
 class RightTriangle(Triangle):
     def __init__(self):
         super().__init__()
-
-###Ejemplo de uso
-p1=Point(0,0)
-p2=Point(2,2)
-p3=Point(0,2)
-p4=Point(0,0)
-
-Rectangle1=Rectangle()
-Rectangle1.set_vertices([p1,p2,p3,p4])
-print(Rectangle1.get_edges())
-
-Triangle1=Triangle()
-Triangle1.set_vertices([p1,p2,p3])
-print(Triangle1.get_edges())
-
