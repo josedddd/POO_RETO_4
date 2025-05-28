@@ -296,7 +296,7 @@ class MainPlate(MenuItem):
         return self.__accompaniment2
 
 ```
-Ahora bien, tambien le hice una modificacion para que si detecta tal item, me haga descuento en todos los otros items de una clase, esto lo hago usando la funcion de python Isistance la cual detecta si un objeto pertence a cierta clase (No juzgar los descuentos, fue lo primero que se me vino a la mente)
+Ahora bien, tambien le hice una modificacion para que si detecta tal item, me haga descuento en todos los otros items de una clase, esto lo primero haciendo una lista con todos los nombres, y luego en un for haciendo que si tal item esta en nombres entonces aplicame descuentos en tal clase. Esto se hace usando la funcion de python Isistance la cual detecta si un objeto pertence a cierta clase,(No juzgar los descuentos, fue lo primero que se me vino a la mente)
 ```python
 
 class Order:
@@ -313,20 +313,27 @@ class Order:
     def calculate_total_price(self) -> float:
         total_bill = 0
         total_quantity = 0
+        main_plate_names = []
+        
+        for item, quantity in self.order:
+            if isinstance(item, MainPlate):
+                main_plate_names.append(item.name)
+
         for menu_item, quantity in self.order:
             price = menu_item.calculate_price(quantity)
+
+            if "Hamburger" in main_plate_names and isinstance(menu_item, Beverage):
+                price *= 0.9  # 10% Discount on beverages
+
+            if "Fried chicken" in main_plate_names and isinstance(menu_item, Dessert):
+                price *= 0.95  # 5% Discount on desserts
+
+            total_bill += price
             total_quantity += quantity
-            if menu_item.name == "Hamburger" and isinstance(menu_item, Beverage):
-                price *= 0.9
-                total_bill += price
-            elif menu_item.name == "Fried chicken" and isinstance(menu_item, Dessert):
-                price *= 0.95
-                total_bill += price
-            elif menu_item.name == "Coca-cola" and  isinstance(menu_item, MainPlate):
-                price *= 0.87
-            total_bill += menu_item.calculate_price(quantity)
+
         if total_quantity >= 10:
-            total_bill *= 0.97
+            total_bill *= 0.97  # 3% discount if the order has 10 items or more
+
         return total_bill
 ```
 Por ultimo añadi los payment methods, tal como se vio en clase, usando poliformismo para variar el metodo pay dependiendo si se paga en efectivo o con tarjeta y ya eso es todo.
