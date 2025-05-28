@@ -1,6 +1,8 @@
 # POO_RETO_4
 
-Aqui explicare todo lo que se hizo. Comenzando por el punto 1 del ejercicio en clase, este era simplemente realizar una superclase Shape de la que solo hereda rectangulo y cuadrado solamente para probar el polimorfismo, aqui no hay mucho de que comentar :).
+Aqui explicare todo lo que se hizo.
+# Punto1
+Comenzando por el punto 1 del ejercicio en clase, este era simplemente realizar una superclase Shape de la que solo hereda rectangulo y cuadrado solamente para probar el polimorfismo, aqui no hay mucho de que comentar :).
 
 ```python
 class Shape():
@@ -39,6 +41,7 @@ class Square(Shape):
         perimeter = 4 * self.width
         return perimeter
 ```
+# Punto2
 Ahora bien, con respecto al segundo ejercicio la cosa se vuelve mas interesante. En este se pedia realizar en codigo el diagrama UML, que aparecia en el reto. Primero decidi de utilizar los vertices, para calcular las otras cosas por lo que set(edges) esta como compute(edges). Luego cree la "super clase" Shape, donde defino todas las funciones que se utilizaran: 
 
 ```python
@@ -218,3 +221,4 @@ class RightTriangle(Triangle):
     def __init__(self):
         super().__init__()
 ```
+# Restaurante
