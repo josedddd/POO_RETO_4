@@ -37,7 +37,7 @@ class Square(Shape):
 ### Ejemplo de uso    
 Square1=Square(width=4)
 Rectangle1=Rectangle(width=5,height=4)
-print(Rectangle1.compute_area)
+print(Rectangle1.compute_area())
 print(Square1.compute_area())
 print(Rectangle1.compute_perimeter())
 print(Square1.compute_perimeter())
