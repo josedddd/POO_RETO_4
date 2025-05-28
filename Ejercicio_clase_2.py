@@ -146,7 +146,7 @@ class Triangle(Shape):
     ]
 
     def compute_inner_angles(self):
-        self.compute_edges
+        self.compute_edges()
          #### El orden del calculo de los angulos es 
          # [Angulo opuesto al lado "A", Angulo opuesto al Lado B, Angulo opuesto al lado C]
         self.compute_edges()
