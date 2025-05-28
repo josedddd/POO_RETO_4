@@ -84,21 +84,29 @@ class Order:
     def calculate_total_price(self) -> float:
         total_bill = 0
         total_quantity = 0
+
+        main_plate_names = []
+        for item, quantity in self.order:
+            if isinstance(item, MainPlate):
+                main_plate_names.append(item.name)
+
         for menu_item, quantity in self.order:
             price = menu_item.calculate_price(quantity)
+
+            if "Hamburger"in main_plate_names and isinstance(menu_item, Beverage):
+                price *= 0.9  # 10% Discount on beverages
+
+            if "Fried chicken" in main_plate_names and isinstance(menu_item, Dessert):
+                price *= 0.95  # 5% Discount on desserts
+
+            total_bill += price
             total_quantity += quantity
-            if menu_item.name == "Hamburger" and isinstance(menu_item, Beverage):
-                price *= 0.9
-                total_bill += price
-            elif menu_item.name == "Fried chicken" and isinstance(menu_item, Dessert):
-                price *= 0.95
-                total_bill += price
-            elif menu_item.name == "Coca-cola" and  isinstance(menu_item, MainPlate):
-                price *= 0.87
-            total_bill += menu_item.calculate_price(quantity)
+
         if total_quantity >= 10:
-            total_bill *= 0.97
+            total_bill *= 0.97  # 3% discount if the order has 10 items or more
+
         return total_bill
+
 
 
 class Payment:
@@ -139,50 +147,50 @@ class Money_Payment(Payment):
         else:
             return "You don't have enough money :///"
             
-# 🥤 Drinks
-coke = Drink("Coca-cola", 2.5)
+# 🥤 Drinksn
+coke = Beverage("Coca-cola", 2.5)
 coke.set_size("medium")
 coke.set_bottle_type("plastic")
 
-water = Drink("Water", 1.5)
+water = Beverage("Water", 1.5)
 water.set_size("large")
 water.set_bottle_type("glass")
 
-juice = Drink("Orange juice", 3.0)
+juice = Beverage("Orange juice", 3.0)
 juice.set_size("small")
 juice.set_bottle_type("tetra pak")
 
-iced_tea = Drink("Iced tea", 2.0)
+iced_tea =Beverage("Iced tea", 2.0)
 iced_tea.set_size("medium")
 iced_tea.set_bottle_type("plastic")
 
 # 🍟 Appetizers
-fries = Appetizer("French fries", 3.0)
+fries = Apetizer("French fries", 3.0)
 fries.set_sauce("Ketchup")
 
-wings = Appetizer("Wings", 4.5)
+wings = Apetizer("Wings", 4.5)
 wings.set_sauce("BBQ")
 
-nuggets = Appetizer("Nuggets", 3.5)
+nuggets = Apetizer("Nuggets", 3.5)
 nuggets.set_sauce("Mustard")
 
-salad = Appetizer("Mixed salad", 3.0)
+salad = Apetizer("Mixed salad", 3.0)
 salad.set_sauce("Ranch")
 
 # 🍽️ Main Courses
-hamburger = MainCourse("Hamburger", 6.0)
+hamburger = MainPlate("Hamburger", 6.0)
 hamburger.set_accompaniment1("French fries")
 hamburger.set_accompaniment2("Salad")
 
-fried_chicken = MainCourse("Fried chicken", 7.0)
+fried_chicken = MainPlate("Fried chicken", 7.0)
 fried_chicken.set_accompaniment1("Mashed potatoes")
 fried_chicken.set_accompaniment2("Corn")
 
-lasagna = MainCourse("Lasagna", 8.0)
+lasagna = MainPlate("Lasagna", 8.0)
 lasagna.set_accompaniment1("Garlic bread")
 lasagna.set_accompaniment2("Green salad")
 
-steak = MainCourse("Steak", 9.5)
+steak = MainPlate("Steak", 9.5)
 steak.set_accompaniment1("Rice")
 steak.set_accompaniment2("Sautéed potatoes")
 
@@ -204,7 +212,6 @@ brownie.set_flavour("Walnut")
 order_1 = Order(number=1)
 
 # Add items
-order_1.add_items(hamburger, 2)     # Hamburger (MainCourse)
 order_1.add_items(juice, 2)         # Juice (Drink)
 order_1.add_items(nuggets, 2)       # Nuggets (Appetizer)
 order_1.add_items(ice_cream, 2)     # Ice cream (Dessert)
@@ -215,6 +222,6 @@ total = order_1.calculate_total_price()
 print(total)
 
 # Add the payment
-cash_payment = MoneyPayment(total)
+cash_payment = Money_Payment(total)
 cash_payment.set_amount(50.0)  #
 print(cash_payment.pay())
