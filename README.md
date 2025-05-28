@@ -132,8 +132,8 @@ class Rectangle(Shape):
         return [90, 90, 90, 90]
 ```
 En consiguiente creo la clase trianguo. Aqui no es tan nescecario tener en cuenta el orden de los vertices. Uso la ley de coseno y la ley del area universal de los triangulos para calcular el area y los angulos internos (si esta vez si los calculo). 
-class Triangle(Shape):
 ```python
+class Triangle(Shape):
 
     def __init__(self):
         super().__init__()
